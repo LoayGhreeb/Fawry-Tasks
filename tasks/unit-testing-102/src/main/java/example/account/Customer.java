@@ -6,7 +6,6 @@ public class Customer {
     private String name;
     private int balance;
     private boolean creditAllowed;
-//    private int maxCredit = 0;
     private boolean vip;
 
     public String getName() {
