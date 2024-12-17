@@ -7,6 +7,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
@@ -27,16 +28,17 @@ public class ProductsServer {
     }
 
     @DELETE
+    @Path("/{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Product> removeProduct(String name) {
+    public List<Product> removeProduct(@PathParam("name") String name) {
         ProductRepository.removeProduct(name);
         return ProductRepository.getProducts();
     }
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Product> setProductPrice(String name, double price) {
-        ProductRepository.setProductPrice(name, price);
+    public List<Product> setProductPrice(Product product) {
+        ProductRepository.setProductPrice(product.getName(), product.getPrice());
         return ProductRepository.getProducts();
     }
 }
