@@ -1,4 +1,4 @@
-package org.example.jakarta.hello;
+package org.example.jakarta;
 
 public class Product {
     private String name;
